@@ -26,6 +26,7 @@ ARMV = 6
 # Build Options
 #   change yes to no to disable
 #
+EXTRAKEY_ENABLE = yes
 EEPROM_CUSTOM = custom
 EEPROM_DRIVER = custom
 NO_USB_STARTUP_CHECK = yes
