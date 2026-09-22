@@ -1,0 +1,26 @@
+name: Build Core75 Firmware
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: qmkfm/qmk_cli
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Build Firmware
+        run: |
+          qmk compile -kb urx/core75 -km default
+
+      - name: Upload Binary Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: urx_core75_firmware
+          path: |
+            *.bin
+            .build/*.bin
